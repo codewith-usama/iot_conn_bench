@@ -16,12 +16,21 @@ kept, and nothing is simulated in the app (test doubles exist only in unit tests
 |---|---|
 | Kotlin research core (domain, runner, metrics, export, selection) | Implemented; **39/39 JVM unit tests pass** |
 | Export recomputation (`tools/analysis/recompute_metrics.py`) | Verified on a SIMULATED sample export |
-| BLE/GATT, MQTT v5 (HiveMQ 1.3.7), Matter (connectedhomeip demo SDK) adapters | Implemented; **not yet compiled on Android** |
-| Flutter UI (dashboard, setup, benchmark, results) | Implemented; `flutter analyze`/`flutter test` not yet run |
-| Android build (`tools/verify.sh`) | **Not yet run** |
+| BLE/GATT, MQTT v5 (HiveMQ 1.3.7), Matter (connectedhomeip demo SDK) adapters | Implemented; **compile with Matter enabled** (debug APK) |
+| Flutter UI (dashboard, setup, benchmark, results) | Implemented; runs on emulator (screenshots below); `flutter analyze`/`flutter test` not yet run |
+| Android build | **Debug APK builds with Matter enabled**; installs and launches on the Android 16 (API 36) emulator |
 | Hardware acceptance (phone + ESP32) | **Not tested** — needs firmware contract values |
 
 See `docs/ACCEPTANCE_REPORT.md` for the PASS / FAIL / NOT TESTED checklist and the researcher actions still required.
+
+## Screenshots
+
+Debug build on the Android emulator (Pixel "Medium Phone", Android 16 / API 36), before any firmware
+contract is entered — every path correctly reports *not configured* and lists the missing values.
+
+| Dashboard | Device & protocol setup | Benchmark configuration |
+|---|---|---|
+| <img src="docs/screenshots/01_dashboard.png" width="250" alt="Dashboard"> | <img src="docs/screenshots/02_setup_ble.png" width="250" alt="Setup (BLE)"> | <img src="docs/screenshots/03_benchmark.png" width="250" alt="Benchmark"> |
 
 ## Quick start (macOS, existing Flutter 3.44.6 toolchain)
 

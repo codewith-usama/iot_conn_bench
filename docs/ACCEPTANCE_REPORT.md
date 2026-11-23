@@ -17,7 +17,7 @@ hardware; build criteria are PASS only with a build log.
 | Criterion | Status | Evidence / note |
 |---|---|---|
 | **Build and architecture** | | |
-| Builds from a clean checkout with documented commands | NOT TESTED | run `bash tools/verify.sh`; logs in `build_logs/` |
+| Builds from a clean checkout with documented commands | PASS (debug APK) | `flutter build apk --debug` with `enableMatter=true` on the developer Mac (2026-11-23); app launches on API 36 emulator. `verify.sh` (analyze, tests) not yet run |
 | Existing conventions preserved | PASS | Flutter 3.44.6 template, AGP 9.0.1, Kotlin 2.3.20, Gradle 9.1.0 copied from the Mac's existing project |
 | Adapters separate from runner | PASS | runner depends only on `ConnectivityAdapter`; verified by JVM tests with doubles |
 | Bridge not used per measured operation | PASS | only `startRun`; timing in `BenchmarkRunner`/adapters (code review) |
@@ -33,7 +33,7 @@ hardware; build criteria are PASS only with a build log.
 | ESP32 processes it and sends an application ack | NOT TESTED | firmware dependent |
 | Op-id correlation, timeout, QoS, reconnect recorded | NOT TESTED on hardware; logic PASS in unit tests | |
 | **Matter** | | |
-| Real Android Matter controller integrated | NOT TESTED (code written) | `src/matter`, `matter-android-demo-sdk:1.0`; compile against the real AAR not yet verified |
+| Real Android Matter controller integrated | PARTIAL | compiles and links against `matter-android-demo-sdk:1.0`; controller start/commissioning NOT TESTED on hardware |
 | Android commissions the ESP32 | NOT TESTED | |
 | Android performs the common operation | NOT TESTED | OnOff only |
 | Commissioning and interaction timings separate | PASS (design) | COMMISSIONED event phases vs operation RTT |

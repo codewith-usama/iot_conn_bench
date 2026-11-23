@@ -74,6 +74,8 @@ android {
             // Research builds: debug signing for local installation only.
             signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = false
+            // AGP 9 enables resource shrinking by default; it requires code shrinking.
+            isShrinkResources = false
         }
     }
 }
